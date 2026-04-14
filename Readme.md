@@ -5,12 +5,14 @@
 ## 🔝 1. Header / Navbar
 
 **Components:**
-- Logo (`JobFinder 🚀`)
-- Search input (global search)
-- Navigation links: `Home` | `Saved Jobs`
-- *(Optional)* Dark mode toggle
+
+- Logo (`JobFinder 🚀`) 
+- Search input (global search) 
+- Navigation links: `Profile` | `Saved Jobs` 
+- _(Optional)_ Dark mode toggle
 
 **Structure:**
+
 ```jsx
 <Navbar>
   <Logo />
@@ -20,22 +22,25 @@
 ```
 
 **UI Idea:**
+
 ```
 [Logo]    [Search jobs...]       [Home] [Saved Jobs]
 ```
 
 ---
 
-## 🎯 2. Hero Section *(Top Banner)*
+## 🎯 2. Hero Section _(Top Banner)_
 
 > 👉 Gives first impression — don't skip this!
 
 **Content:**
+
 - **Heading:** `"Find Your Dream Remote Job"`
 - **Subtext:** `"Search thousands of remote jobs from top companies"`
 - **CTA:** Search input + button
 
 **Structure:**
+
 ```jsx
 <HeroSection>
   <h1 />
@@ -51,12 +56,14 @@
 > 👉 Sits **below** the Hero Section
 
 **Filters:**
-- Category *(dropdown)*
-- Job Type *(optional)*
-- Remote Only *(toggle)*
+
+- Category _(dropdown)_
+- Job Type _(optional)_
+- Remote Only _(toggle)_
 - Clear Filters button
 
 **Structure:**
+
 ```jsx
 <Filters>
   <CategoryFilter />
@@ -67,13 +74,14 @@
 
 ---
 
-## 📋 4. Job Listings Section *(Main Part)*
+## 📋 4. Job Listings Section _(Main Part)_
 
 > 👉 This is the **core** of the page
 
 **Layout:** Grid (2–3 columns)
 
 **Each `JobCard` contains:**
+
 - Job Title
 - Company Name
 - Location
@@ -82,9 +90,10 @@
 - Buttons: `View Details` · `Save Job ⭐`
 
 **Structure:**
+
 ```jsx
 <JobList>
-  {jobs.map(job => (
+  {jobs.map((job) => (
     <JobCard key={job.id} job={job} />
   ))}
 </JobList>
@@ -92,15 +101,15 @@
 
 ---
 
-## ⏳ 5. UI States *(Very Important)*
+## ⏳ 5. UI States _(Very Important)_
 
 > Handle all three states properly:
 
-| State | Component |
-|-------|-----------|
-| Loading | `{loading && <Loader />}` |
-| Empty | `{jobs.length === 0 && <NoJobs />}` |
-| Error | `{error && <ErrorMessage />}` |
+| State   | Component                           |
+| ------- | ----------------------------------- |
+| Loading | `{loading && <Loader />}`           |
+| Empty   | `{jobs.length === 0 && <NoJobs />}` |
+| Error   | `{error && <ErrorMessage />}`       |
 
 ---
 
@@ -114,7 +123,7 @@
 
 ---
 
-## ⭐ 7. Saved Jobs Preview *(Optional Section)*
+## ⭐ 7. Saved Jobs Preview _(Optional Section)_
 
 > 👉 Small section near the bottom
 
@@ -126,11 +135,13 @@
 ## 🔻 8. Footer
 
 **Content:**
+
 - About text
 - Links: `GitHub` · `LinkedIn`
 - Copyright notice
 
 **Structure:**
+
 ```jsx
 <Footer>
   <p />

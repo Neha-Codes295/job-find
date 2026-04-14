@@ -112,6 +112,12 @@ a:hover {
   margin-right: 0;
 }
 
+.header .header-search {
+  margin-bottom: 0;
+  flex: 1 1 12rem;
+  justify-content: center;
+}
+
 .search-row {
   display: flex;
   justify-content: center;

@@ -1,22 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Header from "./Header";
 import Body from "./Body";
-import About from "./About";
-import Contact from "./Contact";
+import Profile from "./Profile";
+import SavedJobs from "./SavedJobs";
 import Error from "./Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 
-const AppLayout = () => (
-    <>
-        <Header />
-        <main className="shell">
-            <p className="site-greeting">Hello, Job Searchers!</p>
-            <Outlet />
-        </main>
-    </>
-);
+const AppLayout = () => {
+    const [searchQuery, setSearchQuery] = useState("");
+
+    return (
+        <>
+            <Header
+                searchQuery={searchQuery}
+                onSearchQueryChange={setSearchQuery}
+            />
+            <main className="shell">
+                <p className="site-greeting">Hello, Job Searchers!</p>
+                <Outlet context={{ searchQuery }} />
+            </main>
+        </>
+    );
+};
 
 const appRouter = createBrowserRouter([
     {
@@ -28,12 +35,12 @@ const appRouter = createBrowserRouter([
                 element: <Body />,
             },
             {
-                path: "/about",
-                element: <About />,
+                path: "/profile",
+                element: <Profile />,
             },
             {
-                path: "/contact",
-                element: <Contact />,
+                path: "/saved-jobs",
+                element: <SavedJobs />,
             },
         ],
         errorElement: <Error />,

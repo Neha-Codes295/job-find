@@ -1,13 +1,14 @@
 import JobCard from "./JobCard";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
+import { useOutletContext } from "react-router";
 
 const Body = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const { searchQuery = "" } = useOutletContext() || {};
 
   useEffect(() => {
     fetchJobs();
@@ -65,17 +66,6 @@ const Body = () => {
 
   return (
     <div className="jobs-page page--home">
-      <div className="search-row">
-        <div className="search-bar">
-          <input
-            type="search"
-            placeholder="Search jobs…"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            aria-label="Search jobs"
-          />
-        </div>
-      </div>
       {filteredJobs.length === 0 ? (
         <p className="state-message no-matches">No jobs match your search.</p>
       ) : (
