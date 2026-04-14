@@ -1,0 +1,1 @@
+export const LOGO_URL = 'https://img.freepik.com/premium-vector/modern-job-search-logo-job-search-vector-illustration-logo-template_393879-911.jpg?semt=ais_hybrid&w=740&q=80';

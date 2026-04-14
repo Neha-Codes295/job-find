@@ -1,0 +1,239 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background: #f0f0f0;
+}
+
+a {
+  color: #0b57d0;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+}
+
+.site-greeting {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  color: #444;
+}
+
+.page {
+  max-width: 42rem;
+}
+
+.page h1 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  line-height: 1.25;
+}
+
+.page-lead {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.page--error {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 50vh;
+}
+
+.page--home {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.state-message {
+  padding: 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  padding: 1rem 1.25rem;
+}
+
+.state-message p {
+  margin: 0;
+}
+
+.error-detail {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  color: #555;
+  word-break: break-word;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo img {
+  display: block;
+  height: 80px;
+  width: auto;
+}
+
+.nav a {
+  color: #1a1a1a;
+  margin-right: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.nav a:last-child {
+  margin-right: 0;
+}
+
+.search-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 28rem;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.search-bar input:focus {
+  outline: 2px solid #0b57d0;
+  outline-offset: 1px;
+}
+
+.jobs-page {
+  padding: 0;
+}
+
+.no-matches {
+  margin: 0;
+}
+
+.job-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 0 0 1rem;
+}
+
+.job-card {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 1rem;
+  background: #fff;
+}
+
+.job-card h3 {
+  font-size: 1.05rem;
+  margin: 0.5rem 0;
+}
+
+.job-card h4 {
+  font-size: 0.95rem;
+  font-weight: normal;
+  margin: 0.25rem 0;
+  color: #444;
+}
+
+.job-card p {
+  margin: 0.35rem 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.job-logo {
+  width: 48px;
+  height: 48px;
+}
+
+img.job-logo {
+  object-fit: contain;
+  display: block;
+}
+
+.job-logo-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8e8e8;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.tags {
+  margin: 0.5rem 0;
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin: 2px 4px 2px 0;
+  font-size: 0.85rem;
+  background: #fafafa;
+}
+
+.job-card a {
+  color: #0b57d0;
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.job-card a:hover {
+  text-decoration: underline;
+}
+
+.shimmer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 0 0 1rem;
+}
+
+.shimmer-card {
+  min-height: 180px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #e8e8e8;
+}
