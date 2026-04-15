@@ -6,7 +6,8 @@ import Body from "./Body";
 import Profile from "./Profile";
 import SavedJobs from "./SavedJobs";
 import Error from "./Error";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Hero from "./Hero";
 
 const AppLayout = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -17,9 +18,10 @@ const AppLayout = () => {
                 searchQuery={searchQuery}
                 onSearchQueryChange={setSearchQuery}
             />
+            <Hero />
             <main className="shell">
                 <p className="site-greeting">Hello, Job Searchers!</p>
-                <Outlet context={{ searchQuery }} />
+                <Outlet context={{ searchQuery, onSearchQueryChange: setSearchQuery }} />
             </main>
         </>
     );

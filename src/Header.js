@@ -1,4 +1,5 @@
 import { LOGO_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Header = ({ searchQuery, onSearchQueryChange }) => {
     return (
@@ -22,8 +23,8 @@ const Header = ({ searchQuery, onSearchQueryChange }) => {
             </div>
 
             <div className="nav">
-                <a href="/profile">Profile</a>
-                <a href="/saved-jobs">Saved Jobs</a>
+                <Link to="/profile">Profile</Link>
+                <Link to="/saved-jobs">Saved Jobs</Link>
             </div>
         </div>
     );

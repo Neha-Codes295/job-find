@@ -1,5 +1,6 @@
 import JobCard from "./JobCard";
 import Shimmer from "./Shimmer";
+import Filter from './Filter';
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router";
 
@@ -8,7 +9,10 @@ const Body = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const { searchQuery = "" } = useOutletContext() || {};
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [remoteOnly, setRemoteOnly] = useState(false);
+
+  const { searchQuery = "", onSearchQueryChange } = useOutletContext() || {};
 
   useEffect(() => {
     fetchJobs();
@@ -56,21 +60,55 @@ const Body = () => {
   }
 
   const q = searchQuery.trim().toLowerCase();
-  const filteredJobs = !q
-    ? jobs
-    : jobs.filter((job) =>
-        `${job.title} ${job.company_name}`
-          .toLowerCase()
-          .includes(q)
+
+  let list = jobs;
+  if (q) {
+    list = list.filter((job) =>
+      `${job.title} ${job.company_name}`.toLowerCase().includes(q)
+    );
+  }
+  if (selectedCategory) {
+    list = list.filter(
+      (job) => job.category?.toLowerCase() === selectedCategory.toLowerCase()
+    );
+  }
+
+  if (remoteOnly) {
+    list = list.filter((job) => {
+      const loc = (job.candidate_required_location || "").toLowerCase();
+      return (
+        loc.includes("worldwide") ||
+        loc.includes("anywhere") ||
+        loc.includes("fully remote") ||
+        loc === "remote"
       );
+    });
+  }
+
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  const clearFilters = () => {
+    setSelectedCategory("");
+    setRemoteOnly(false);
+    onSearchQueryChange?.("");
+  };
 
   return (
     <div className="jobs-page page--home">
-      {filteredJobs.length === 0 ? (
+      <Filter
+        selectedCategory={selectedCategory}
+        onCategoryChange={handleCategoryChange}
+        remoteOnly={remoteOnly}
+        onRemoteOnlyChange={setRemoteOnly}
+        onClearFilters={clearFilters}
+      />
+      {list.length === 0 ? (
         <p className="state-message no-matches">No jobs match your search.</p>
       ) : (
         <div className="job-list">
-          {filteredJobs.map((job) => (
+          {list.map((job) => (
             <JobCard key={job.id} job={job} />
           ))}
         </div>
