@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import Filter from './Filter';
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router";
+import Pagination from "./Pagination";
 
 const Body = () => {
   const [jobs, setJobs] = useState([]);
@@ -107,11 +108,9 @@ const Body = () => {
       {list.length === 0 ? (
         <p className="state-message no-matches">No jobs match your search.</p>
       ) : (
-        <div className="job-list">
-          {list.map((job) => (
-            <JobCard key={job.id} job={job} />
-          ))}
-        </div>
+        <Pagination
+          items={list}
+          jobList={(job) => <JobCard key={job.id} job={job} />} />
       )}
     </div>
   );

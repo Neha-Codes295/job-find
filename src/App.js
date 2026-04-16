@@ -8,6 +8,7 @@ import SavedJobs from "./SavedJobs";
 import Error from "./Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Hero from "./Hero";
+import Footer from "./Footer";
 
 const AppLayout = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -23,6 +24,7 @@ const AppLayout = () => {
                 <p className="site-greeting">Hello, Job Searchers!</p>
                 <Outlet context={{ searchQuery, onSearchQueryChange: setSearchQuery }} />
             </main>
+            <Footer />
         </>
     );
 };

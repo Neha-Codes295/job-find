@@ -1,5 +1,7 @@
 const JobCard = (props) => {
-    const { job } = props;
+    const { job, showSaveButton = true } = props;
+
+    // const showSaveButton = true;
 
     return (
         <div className="job-card">
@@ -10,9 +12,9 @@ const JobCard = (props) => {
             />
             <h3>{job.title}</h3>
             <h4>{job.company_name}</h4>
-            <h4>{job.category}</h4>
-            <h4>{job.publication_date}</h4>
-            <p>{job.job_type}</p>
+            {/* <h4>{job.category}</h4> */}
+            {/* <h4>{job.publication_date}</h4> */}
+            {/* <p>{job.job_type}</p> */}
             <p>{job.candidate_required_location}</p>
             <h3>{job.salary}</h3>
             <div className="tags">
@@ -25,7 +27,20 @@ const JobCard = (props) => {
             <a href={job.url} target="_blank" rel="noreferrer">
                 View Job →
             </a>
-            <button className="save-button" onClick={() => alert('Job saved!')} >Save Job</button>
+            {showSaveButton && (
+                <button className="save-button"
+                    onClick={() => {
+                        const savedJobs = JSON.parse(localStorage.getItem('savedJobs')) || [];
+                        if (!savedJobs.some(savedJob => savedJob.id === job.id)) {
+                            savedJobs.push(job);
+                            localStorage.setItem('savedJobs', JSON.stringify(savedJobs));
+                            alert('Job saved!');
+                        } else {
+                            alert('Job already saved!');
+                        }
+                    }}
+                >Save Job</button>
+            )}
         </div>
     );
 };
