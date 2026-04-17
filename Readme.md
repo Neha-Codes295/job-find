@@ -7,9 +7,9 @@
 **Components:**
 
 - Logo (`JobFinder 🚀`) 
-- Search input (global search) 
-- Navigation links: `Profile` | `Saved Jobs` 
-- _(Optional)_ Dark mode toggle
+- Search input (global search) - CTA
+- Navigation links: `Profile` | `Saved Jobs`
+- Dark / light mode toggle
 
 **Structure:**
 
@@ -21,32 +21,28 @@
 </Navbar>
 ```
 
-**UI Idea:**
+**UI idea:**
 
 ```
-[Logo]    [Search jobs...]       [Home] [Saved Jobs]
+[Logo]    [Search jobs…]    Profile | Saved Jobs    [Dark / Light]
 ```
 
 ---
 
 ## 🎯 2. Hero Section _(Top Banner)_
 
-> 👉 Gives first impression — don't skip this!
-
-**Content:**
+> 👉 Gives first impression 
 
 - **Heading:** `"Find Your Dream Remote Job"`
 - **Subtext:** `"Search thousands of remote jobs from top companies"`
-- **CTA:** Search input + button
 
 **Structure:**
 
 ```jsx
-<HeroSection>
+<Hero>
   <h1 />
   <p />
-  <SearchBar />
-</HeroSection>
+</Hero>
 ```
 
 ---
@@ -155,9 +151,9 @@
 
 ```
 ┌──────────────────────────────────────────────────┐
-│                    Navbar                        │
+│  Navbar (logo · global search(CTA) · nav · theme)     │
 ├──────────────────────────────────────────────────┤
-│          Hero Section (heading + search)         │
+│     Hero (heading + subtext only)       │
 ├──────────────────────────────────────────────────┤
 │                    Filters                       │
 ├──────────────────────────────────────────────────┤

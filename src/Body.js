@@ -11,6 +11,7 @@ const Body = () => {
   const [error, setError] = useState(null);
 
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedJobType, setSelectedJobType] = useState("");
   const [remoteOnly, setRemoteOnly] = useState(false);
 
   const { searchQuery = "", onSearchQueryChange } = useOutletContext() || {};
@@ -74,6 +75,13 @@ const Body = () => {
     );
   }
 
+  if (selectedJobType) {
+    list = list.filter(
+      (job) =>
+        (job.job_type || "").toLowerCase() === selectedJobType.toLowerCase()
+    );
+  }
+
   if (remoteOnly) {
     list = list.filter((job) => {
       const loc = (job.candidate_required_location || "").toLowerCase();
@@ -90,8 +98,13 @@ const Body = () => {
     setSelectedCategory(e.target.value);
   };
 
+  const handleJobTypeChange = (e) => {
+    setSelectedJobType(e.target.value);
+  };
+
   const clearFilters = () => {
     setSelectedCategory("");
+    setSelectedJobType("");
     setRemoteOnly(false);
     onSearchQueryChange?.("");
   };
@@ -101,6 +114,8 @@ const Body = () => {
       <Filter
         selectedCategory={selectedCategory}
         onCategoryChange={handleCategoryChange}
+        selectedJobType={selectedJobType}
+        onJobTypeChange={handleJobTypeChange}
         remoteOnly={remoteOnly}
         onRemoteOnlyChange={setRemoteOnly}
         onClearFilters={clearFilters}

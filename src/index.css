@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
 }
@@ -109,69 +113,6 @@ a:hover {
   font-size: 0.95rem;
   color: #555;
   word-break: break-word;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: #fff;
-  border-bottom: 1px solid #ccc;
-}
-
-.logo img {
-  display: block;
-  height: 80px;
-  width: auto;
-}
-
-.nav a {
-  color: #1a1a1a;
-  margin-right: 1rem;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.nav a:hover {
-  text-decoration: underline;
-}
-
-.nav a:last-child {
-  margin-right: 0;
-}
-
-.header .header-search {
-  margin-bottom: 0;
-  flex: 1 1 12rem;
-  justify-content: center;
-}
-
-.search-row {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.search-bar {
-  width: 100%;
-  max-width: 28rem;
-}
-
-.search-bar input {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  font: inherit;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: #fff;
-}
-
-.search-bar input:focus {
-  outline: 2px solid #0b57d0;
-  outline-offset: 1px;
 }
 
 .jobs-page {
@@ -361,6 +302,10 @@ img.job-logo {
     animation: none;
     background: #e8e8e8;
   }
+
+  .dark .shimmer-card {
+    background: #262626;
+  }
 }
 
 /* Footer */
@@ -500,4 +445,147 @@ button {
 
 .job-list.saved-jobs__list:empty::before {
   content: "No saved jobs yet. Open a job on the home page and use Save Job to add it here.";
+}
+
+/* Dark mode: html gets class "dark" from theme toggle */
+.dark body {
+  background: #171717;
+  color: #e5e5e5;
+}
+
+.dark a {
+  color: #7cb4ff;
+}
+
+.dark .site-greeting {
+  color: #a3a3a3;
+}
+
+.dark .page-lead,
+.dark .error-detail {
+  color: #a3a3a3;
+}
+
+.dark .page h1 {
+  color: #fafafa;
+}
+
+.dark .state-message {
+  border-color: #404040;
+  background: #262626;
+  color: #e5e5e5;
+}
+
+.dark .hero {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .job-filters__label {
+  color: #d4d4d4;
+}
+
+.dark .job-filters select,
+.dark .job-filters__clear {
+  border-color: #525252;
+  background: #262626;
+  color: #e5e5e5;
+}
+
+.dark .job-filters__clear:hover {
+  background: #404040;
+  border-color: #737373;
+}
+
+.dark .job-card {
+  border-color: #404040;
+  background: #262626;
+}
+
+.dark .job-card h4,
+.dark .job-card p {
+  color: #a3a3a3;
+}
+
+.dark .tag {
+  border-color: #525252;
+  background: #171717;
+  color: #d4d4d4;
+}
+
+.dark .job-card a {
+  color: #7cb4ff;
+}
+
+.dark .shimmer-card {
+  border-color: #404040;
+  background: linear-gradient(
+    90deg,
+    #262626 0%,
+    #404040 45%,
+    #262626 90%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-sweep 1.4s ease-in-out infinite;
+}
+
+.dark .footer {
+  background: #262626;
+  border-top-color: #404040;
+  color: #a3a3a3;
+}
+
+.dark .footer a {
+  color: #7cb4ff;
+}
+
+.dark .save-button {
+  color: #e5e5e5;
+  background: #262626;
+  border-color: #525252;
+}
+
+.dark .save-button:hover {
+  background: #404040;
+  border-color: #737373;
+}
+
+.dark .saved-jobs__header {
+  border-bottom-color: #404040;
+}
+
+.dark .saved-jobs__header h1 {
+  color: #fafafa;
+}
+
+.dark .saved-jobs__header .page-lead {
+  color: #a3a3a3;
+}
+
+.dark .job-list.saved-jobs__list:empty {
+  border-color: #525252;
+  background: #262626;
+  color: #a3a3a3;
+}
+
+.dark .profile-form label {
+  color: #d4d4d4;
+}
+
+.dark .profile-form input[type="text"],
+.dark .profile-form input[type="email"],
+.dark .profile-form input[type="tel"] {
+  border-color: #525252;
+  background: #262626;
+  color: #e5e5e5;
+}
+
+.dark .profile-card {
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #262626;
+}
+
+.dark .profile-card p {
+  color: #e5e5e5;
 }

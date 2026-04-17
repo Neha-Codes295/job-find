@@ -1,3 +1,13 @@
+const JOB_TYPES = [
+  { value: "", label: "All job types" },
+  { value: "full_time", label: "Full-time" },
+  { value: "part_time", label: "Part-time" },
+  { value: "contract", label: "Contract" },
+  { value: "freelance", label: "Freelance" },
+  { value: "internship", label: "Internship" },
+  { value: "other", label: "Other" },
+];
+
 const CATEGORIES = [
   { value: "", label: "All categories" },
   { value: "Software Development", label: "Software development" },
@@ -23,6 +33,8 @@ const CATEGORIES = [
 const Filter = ({
   selectedCategory,
   onCategoryChange,
+  selectedJobType,
+  onJobTypeChange,
   remoteOnly,
   onRemoteOnlyChange,
   onClearFilters,
@@ -37,6 +49,17 @@ const Filter = ({
         >
           {CATEGORIES.map(({ value, label }) => (
             <option key={value || "all"} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label className="job-filters__field">
+        <span className="job-filters__label">Job type</span>
+        <select value={selectedJobType} onChange={onJobTypeChange}>
+          {JOB_TYPES.map(({ value, label }) => (
+            <option key={value || "all-types"} value={value}>
               {label}
             </option>
           ))}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Header from "./Header";
@@ -10,14 +10,41 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Hero from "./Hero";
 import Footer from "./Footer";
 
+const THEME_KEY = "jobfind-theme";
+
 const AppLayout = () => {
     const [searchQuery, setSearchQuery] = useState("");
+    const [darkMode, setDarkMode] = useState(() => {
+        try {
+            return localStorage.getItem(THEME_KEY) === "dark";
+        } catch {
+            return false;
+        }
+    });
+
+    useLayoutEffect(() => {
+        document.documentElement.classList.toggle("dark", darkMode);
+    }, [darkMode]);
+
+    const toggleDarkMode = () => {
+        setDarkMode((prev) => {
+            const next = !prev;
+            try {
+                localStorage.setItem(THEME_KEY, next ? "dark" : "light");
+            } catch {
+                /* ignore */
+            }
+            return next;
+        });
+    };
 
     return (
         <>
             <Header
                 searchQuery={searchQuery}
                 onSearchQueryChange={setSearchQuery}
+                darkMode={darkMode}
+                onToggleDarkMode={toggleDarkMode}
             />
             <Hero />
             <main className="shell">
