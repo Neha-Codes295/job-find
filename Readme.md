@@ -198,7 +198,3 @@ src/
 │   └── Home.jsx
 └── App.jsx
 ```
-
----
-
-> ✅ **Next Step:** Start building components top-to-bottom — `Navbar` → `Hero` → `Filters` → `JobCard` → `Footer`
