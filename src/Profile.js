@@ -47,9 +47,9 @@ const Profile = () => {
 
     return (
         <div className="page">
-            <h1>Your Profile</h1>
-            <p className="page-lead">This is about Job Searcher</p>
-            <p>Please fill out your personal information and upload your resume to get started.</p>
+            <h1>Your profile</h1>
+            <p className="page-lead">Keep your details handy for applications.</p>
+            <p>Add your contact information and résumé so you are ready when the right role appears.</p>
 
             {isEditing && (
                 <form className="profile-form" onSubmit={handleSubmit}>

@@ -39,7 +39,10 @@ const AppLayout = () => {
     };
 
     return (
-        <>
+        <div className="app-layout">
+            <a href="#main-content" className="skip-link">
+                Skip to main content
+            </a>
             <Header
                 searchQuery={searchQuery}
                 onSearchQueryChange={setSearchQuery}
@@ -47,12 +50,15 @@ const AppLayout = () => {
                 onToggleDarkMode={toggleDarkMode}
             />
             <Hero />
-            <main className="shell">
-                <p className="site-greeting">Hello, Job Searchers!</p>
+            <main id="main-content" className="shell" tabIndex={-1}>
+                <header className="page-intro">
+                    <p className="page-intro__eyebrow">JobFind</p>
+                    <h2 className="page-intro__title">Discover your next role</h2>
+                </header>
                 <Outlet context={{ searchQuery, onSearchQueryChange: setSearchQuery }} />
             </main>
             <Footer />
-        </>
+        </div>
     );
 };
 

@@ -6,14 +6,18 @@ const Error = () => {
     
     return (
         <div className="page page--error">
-            <h1>Oops!</h1>
-            <p className="page-lead">Something went wrong.</p>
-            <p className="error-detail">
-                {err?.status != null ? `${err.status}: ${err.statusText || ""}` : String(err?.message || err || "Unknown error")}
-            </p>
-            <p>
-                <a href="/">Back to home</a>
-            </p>
+            <div className="error-panel">
+                <h1>Oops</h1>
+                <p className="page-lead">Something went wrong.</p>
+                <p className="error-detail">
+                    {err?.status != null
+                        ? `${err.status}: ${err.statusText || ""}`
+                        : String(err?.message || err || "Unknown error")}
+                </p>
+                <p className="error-panel__actions">
+                    <a href="/">Back to home</a>
+                </p>
+            </div>
         </div>
     );
 }

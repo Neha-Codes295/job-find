@@ -110,22 +110,32 @@ const Body = () => {
   };
 
   return (
-    <div className="jobs-page page--home">
-      <Filter
-        selectedCategory={selectedCategory}
-        onCategoryChange={handleCategoryChange}
-        selectedJobType={selectedJobType}
-        onJobTypeChange={handleJobTypeChange}
-        remoteOnly={remoteOnly}
-        onRemoteOnlyChange={setRemoteOnly}
-        onClearFilters={clearFilters}
-      />
+    <div className="jobs-page page--home" id="browse-jobs">
+      <section className="filters-panel" aria-label="Search and filters">
+        <Filter
+          selectedCategory={selectedCategory}
+          onCategoryChange={handleCategoryChange}
+          selectedJobType={selectedJobType}
+          onJobTypeChange={handleJobTypeChange}
+          remoteOnly={remoteOnly}
+          onRemoteOnlyChange={setRemoteOnly}
+          onClearFilters={clearFilters}
+        />
+        <p className="results-summary" role="status">
+          Showing <strong>{list.length}</strong>{" "}
+          {list.length === 1 ? "role" : "roles"}
+          {q || selectedCategory || selectedJobType || remoteOnly
+            ? " matching your filters"
+            : " available"}
+        </p>
+      </section>
       {list.length === 0 ? (
-        <p className="state-message no-matches">No jobs match your search.</p>
+        <p className="no-matches">No jobs match your search or filters.</p>
       ) : (
         <Pagination
           items={list}
-          jobList={(job) => <JobCard key={job.id} job={job} />} />
+          jobList={(job) => <JobCard key={job.id} job={job} />}
+        />
       )}
     </div>
   );
