@@ -1,6 +1,6 @@
 import JobCard from "./JobCard";
 import Shimmer from "./Shimmer";
-import Filter from './Filter';
+import Filter from "./Filter";
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router";
 import Pagination from "./Pagination";
@@ -38,7 +38,7 @@ const Body = () => {
 
   if (loading) {
     return (
-      <div className="page page--home">
+      <div className="w-full max-w-none">
         <Shimmer />
       </div>
     );
@@ -46,17 +46,24 @@ const Body = () => {
 
   if (error) {
     return (
-      <div className="page state-message" role="alert">
-        <p>Could not load jobs.</p>
-        <p className="error-detail">{error}</p>
+      <div
+        className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"
+        role="alert"
+      >
+        <p className="m-0 font-medium text-slate-900 dark:text-slate-100">
+          Could not load jobs.
+        </p>
+        <p className="mt-2 break-words text-sm text-slate-600 dark:text-slate-400">
+          {error}
+        </p>
       </div>
     );
   }
 
   if (jobs.length === 0) {
     return (
-      <div className="page state-message">
-        <p>No jobs found.</p>
+      <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <p className="m-0 text-slate-700 dark:text-slate-300">No jobs found.</p>
       </div>
     );
   }
@@ -110,8 +117,11 @@ const Body = () => {
   };
 
   return (
-    <div className="jobs-page page--home" id="browse-jobs">
-      <section className="filters-panel" aria-label="Search and filters">
+    <div className="w-full pb-4" id="browse-jobs">
+      <section
+        className="mb-5 rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"
+        aria-label="Search and filters"
+      >
         <Filter
           selectedCategory={selectedCategory}
           onCategoryChange={handleCategoryChange}
@@ -121,8 +131,14 @@ const Body = () => {
           onRemoteOnlyChange={setRemoteOnly}
           onClearFilters={clearFilters}
         />
-        <p className="results-summary" role="status">
-          Showing <strong>{list.length}</strong>{" "}
+        <p
+          className="mt-4 border-t border-slate-200 pt-3 text-sm font-medium text-slate-600 dark:border-slate-700 dark:text-slate-400"
+          role="status"
+        >
+          Showing{" "}
+          <strong className="font-bold text-slate-900 dark:text-slate-100">
+            {list.length}
+          </strong>{" "}
           {list.length === 1 ? "role" : "roles"}
           {q || selectedCategory || selectedJobType || remoteOnly
             ? " matching your filters"
@@ -130,7 +146,9 @@ const Body = () => {
         </p>
       </section>
       {list.length === 0 ? (
-        <p className="no-matches">No jobs match your search or filters.</p>
+        <p className="mt-4 rounded-lg border border-dashed border-slate-300 bg-slate-50 px-5 py-4 text-center text-sm text-slate-600 dark:border-slate-600 dark:bg-slate-900/50 dark:text-slate-400">
+          No jobs match your search or filters.
+        </p>
       ) : (
         <Pagination
           items={list}

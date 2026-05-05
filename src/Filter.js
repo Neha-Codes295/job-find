@@ -30,6 +30,9 @@ const CATEGORIES = [
   { value: "All others", label: "All others" },
 ];
 
+const selectClass =
+  "min-w-[14rem] rounded-md border border-slate-300 bg-white px-2.5 py-2 text-sm text-slate-900 focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-500/30 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:focus:border-brand-400 dark:focus:ring-brand-400/25";
+
 const Filter = ({
   selectedCategory,
   onCategoryChange,
@@ -40,10 +43,17 @@ const Filter = ({
   onClearFilters,
 }) => {
   return (
-    <div className="job-filters" role="search" aria-label="Job filters">
-      <label className="job-filters__field">
-        <span className="job-filters__label">Category</span>
+    <div
+      className="flex flex-wrap items-end gap-4 gap-y-4 md:gap-x-6"
+      role="search"
+      aria-label="Job filters"
+    >
+      <label className="flex min-w-[12rem] flex-col gap-1.5 text-sm">
+        <span className="font-semibold text-slate-800 dark:text-slate-200">
+          Category
+        </span>
         <select
+          className={selectClass}
           value={selectedCategory}
           onChange={onCategoryChange}
         >
@@ -55,9 +65,15 @@ const Filter = ({
         </select>
       </label>
 
-      <label className="job-filters__field">
-        <span className="job-filters__label">Job type</span>
-        <select value={selectedJobType} onChange={onJobTypeChange}>
+      <label className="flex min-w-[12rem] flex-col gap-1.5 text-sm">
+        <span className="font-semibold text-slate-800 dark:text-slate-200">
+          Job type
+        </span>
+        <select
+          className={selectClass}
+          value={selectedJobType}
+          onChange={onJobTypeChange}
+        >
           {JOB_TYPES.map(({ value, label }) => (
             <option key={value || "all-types"} value={value}>
               {label}
@@ -66,19 +82,22 @@ const Filter = ({
         </select>
       </label>
 
-      <label className="job-filters__field job-filters__field--inline">
+      <label className="flex cursor-pointer items-center gap-2 text-sm">
         <input
           id="remote-only"
           type="checkbox"
+          className="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800"
           checked={remoteOnly}
           onChange={(e) => onRemoteOnlyChange(e.target.checked)}
         />
-        <span className="job-filters__label">Worldwide-friendly only</span>
+        <span className="font-semibold text-slate-800 dark:text-slate-200">
+          Worldwide-friendly only
+        </span>
       </label>
 
       <button
         type="button"
-        className="job-filters__clear"
+        className="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-brand-600 hover:bg-brand-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:hover:border-brand-400 dark:hover:bg-brand-950/40"
         onClick={onClearFilters}
       >
         Clear filters

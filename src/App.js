@@ -39,7 +39,7 @@ const AppLayout = () => {
     };
 
     return (
-        <div className="app-layout">
+        <div className="flex min-h-screen flex-col bg-slate-50 dark:bg-slate-950">
             <a href="#main-content" className="skip-link">
                 Skip to main content
             </a>
@@ -50,10 +50,18 @@ const AppLayout = () => {
                 onToggleDarkMode={toggleDarkMode}
             />
             <Hero />
-            <main id="main-content" className="shell" tabIndex={-1}>
-                <header className="page-intro">
-                    <p className="page-intro__eyebrow">JobFind</p>
-                    <h2 className="page-intro__title">Discover your next role</h2>
+            <main
+                id="main-content"
+                className="mx-auto w-full max-w-6xl flex-1 px-5 pb-10"
+                tabIndex={-1}
+            >
+                <header className="mb-6 border-t border-slate-200 pt-4 dark:border-slate-700">
+                    <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                        JobFind
+                    </p>
+                    <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-2xl">
+                        Discover your next role
+                    </h2>
                 </header>
                 <Outlet context={{ searchQuery, onSearchQueryChange: setSearchQuery }} />
             </main>

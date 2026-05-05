@@ -33,8 +33,8 @@
 
 > 👉 Gives first impression 
 
-- **Heading:** `"Find Your Dream Remote Job"`
-- **Subtext:** `"Search thousands of remote jobs from top companies"`
+- **Heading:** `"Find Your Dream Job"`
+- **Subtext:** `"Search thousands of jobs from top companies"`
 
 **Structure:**
 
